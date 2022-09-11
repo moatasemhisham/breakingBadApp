@@ -27,7 +27,8 @@ class AppRouter {
         );
       case characterDetailsScreen:
         return MaterialPageRoute(
-            builder: (_) => const CharacterDetailsScreen());
+          builder: (_) => const CharacterDetailsScreen(),
+        );
     }
     return null;
   }
