@@ -18,9 +18,9 @@ class CharactersApi {
   Future<List<dynamic>> getAllCharacters() async {
     try {
       Response response = await dio.get('characters');
-      print(response.data.toString());
+      print(response?.data.toString());
       print(response.statusCode);
-      return response.data;
+      return response?.data;
     } catch (e) {
       if (kDebugMode) {
         Response response = await dio.get('characters');
