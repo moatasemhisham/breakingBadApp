@@ -14,7 +14,7 @@ class AllCharactersScreen extends StatefulWidget {
 }
 
 class _AllCharactersScreenState extends State<AllCharactersScreen> {
-  List<Character>? allCharacters;
+  late List<Character> allCharacters;
 
   @override
   void initState() {
@@ -30,6 +30,7 @@ class _AllCharactersScreenState extends State<AllCharactersScreen> {
           allCharacters = (state).character;
           return buildLoadedListWidgets();
         } else {
+          print('error');
           return showLoadingIndicator();
         }
       },
@@ -65,9 +66,14 @@ class _AllCharactersScreenState extends State<AllCharactersScreen> {
           crossAxisSpacing: 1,
           mainAxisSpacing: 1,
         ),
+        shrinkWrap: true,
+        physics: const ClampingScrollPhysics(),
+        padding: EdgeInsets.zero,
+        itemCount: allCharacters.length,
         itemBuilder: (ctx, index) {
-          //TODO: not done
-          return CharacterItem();
+          return CharacterItem(
+            character: allCharacters[index],
+          );
         });
   }
 
